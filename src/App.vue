@@ -8,6 +8,7 @@
     <ToDoInput @add-todo="addTodo" />
     <TodoList
       :todos="filteredTodos"
+      :items-left="itemsLeft"
       @toggle-completed="toggleCompleted"
       @clear-completed="removeCompletedTodos"
     />
@@ -62,4 +63,12 @@ const toggleCompleted = (id: number) => {
 const removeCompletedTodos = () => {
   todos.value = todos.value.filter((todo) => !todo.completed);
 };
+
+const itemsLeft = computed(() => {
+  const notCompleted = todos.value.filter((todo) => !todo.completed);
+  console.log(notCompleted.length);
+  return notCompleted.length;
+});
 </script>
+
+// A faire Items left

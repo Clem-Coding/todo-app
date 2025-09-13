@@ -6,7 +6,12 @@
     </li>
   </ul>
   <div>
-    <p>items left</p>
+    <p>
+      {{ props.itemsLeft !== 0 ? props.itemsLeft : "" }}
+      {{
+        props.itemsLeft === 0 ? "No items left" : props.itemsLeft === 1 ? "item left" : "items left"
+      }}
+    </p>
     <button @click="emitClearCompleted">Clear Completed</button>
   </div>
 </template>
@@ -22,6 +27,7 @@ interface Todo {
 
 const props = defineProps<{
   todos: Todo[];
+  itemsLeft: number;
 }>();
 
 const emit = defineEmits<{
