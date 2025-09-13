@@ -11,6 +11,7 @@
       :items-left="itemsLeft"
       @toggle-completed="toggleCompleted"
       @clear-completed="removeCompletedTodos"
+      @delete-todo="deleteTodo"
     />
     <OptionsPanel :filter="filter" @set-filter="setFilter" />
   </main>
@@ -66,9 +67,12 @@ const removeCompletedTodos = () => {
 
 const itemsLeft = computed(() => {
   const notCompleted = todos.value.filter((todo) => !todo.completed);
-  console.log(notCompleted.length);
   return notCompleted.length;
 });
+
+const deleteTodo = (id: number) => {
+  todos.value = todos.value.filter((todo) => todo.id !== id);
+};
 </script>
 
 // A faire Items left

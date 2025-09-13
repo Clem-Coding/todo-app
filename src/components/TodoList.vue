@@ -3,6 +3,9 @@
     <li v-for="todo in props.todos" :key="todo.id" :class="{ active: todo.completed }">
       <input type="checkbox" :checked="todo.completed" @change="emitToggle(todo.id)" />
       {{ todo.title }}
+      <button @click="emitDelete(todo.id)">
+        <img src="/images/icon-cross.svg" alt="Supprimer la tâche" />
+      </button>
     </li>
   </ul>
   <div>
@@ -33,6 +36,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   (e: "toggle-completed", id: number): void;
   (e: "clear-completed"): void;
+  (e: "delete-todo", id: number): void;
 }>();
 
 const emitToggle = (id: number) => {
@@ -41,5 +45,9 @@ const emitToggle = (id: number) => {
 
 const emitClearCompleted = () => {
   emit("clear-completed");
+};
+
+const emitDelete = (id: number) => {
+  emit("delete-todo", id);
 };
 </script>

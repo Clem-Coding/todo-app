@@ -25,5 +25,5 @@ const handleSubmit = () => {
     emit("add-todo", trimmed);
     newTask.value = "";
   }
-}
+};
 </script>
