@@ -1,0 +1,31 @@
+:root {
+  /* Layout */
+  --width-mobile: 375px;
+  --width-desktop: 1440px;
+
+  /* Colors (Dark Theme by default) */
+  --color-bg: hsl(235, 21%, 11%);
+  --color-surface: hsl(235, 24%, 19%);
+  --color-text: hsl(234, 39%, 85%);
+  --color-secondary: hsl(236, 33%, 92%);
+  --color-border: hsl(233, 14%, 35%);
+  --color-gray-600: hsl(236, 9%, 61%);
+  --color-blue-500: hsl(220, 98%, 61%);
+  --color-check-bg: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+  /* Typography */
+  --font-size-body: 1.125rem;
+  --font-family: "Josefin Sans", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+}
+
+/* Light Theme Overrides */
+.light-theme {
+  --color-bg: hsl(0, 0%, 98%);
+  --color-surface: hsl(0, 0%, 100%);
+  --color-text: hsl(235, 19%, 35%);
+  --color-secondary: hsl(233, 11%, 84%);
+  --color-border: hsl(233, 11%, 84%);
+  --color-gray-600: hsl(236, 9%, 61%);
+}
