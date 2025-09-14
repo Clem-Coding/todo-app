@@ -1,10 +1,19 @@
 <template>
   <header class="header">
-    <img src="/images/bg-mobile-dark.jpg" alt="Background" class="header-bg" />
-    <h1>TODO</h1>
+    <div class="container">
+      <img
+        :class="['header-bg', isDarkMode ? 'dark' : 'light']"
+        :src="isDarkMode ? '/images/bg-mobile-dark.jpg' : '/images/bg-mobile-light.jpg'"
+        alt="Background"
+      />
+      <div class="header-content">
+        <h1>TODO</h1>
+        <DarkModeToggle :isDarkMode="isDarkMode" @toggle-dark-mode="toggleDarkMode" />
+      </div>
+    </div>
   </header>
 
-  <main>
+  <main class="container">
     <ToDoInput @add-todo="addTodo" />
     <TodoList
       :todos="filteredTodos"
@@ -23,6 +32,10 @@ import { computed } from "vue";
 import ToDoInput from "./components/ToDoInput.vue";
 import TodoList from "./components/TodoList.vue";
 import OptionsPanel from "./components/OptionsPanel.vue";
+import DarkModeToggle from "./components/DarkModeToggle.vue";
+
+// Track dark mode state
+const isDarkMode = ref(false);
 
 interface Todo {
   title: string;
@@ -73,6 +86,12 @@ const itemsLeft = computed(() => {
 const deleteTodo = (id: number) => {
   todos.value = todos.value.filter((todo) => todo.id !== id);
 };
-</script>
 
-// A faire Items left
+const toggleDarkMode = () => {
+  isDarkMode.value = !isDarkMode.value;
+  document.body.classList.toggle("light-theme", !isDarkMode.value);
+};
+
+// expose ref for testing
+defineExpose({ todos, filter, filteredTodos, setFilter });
+</script>
