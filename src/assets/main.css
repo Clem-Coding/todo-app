@@ -1,17 +1,74 @@
+/* ===========================
+  1. Imports & Variables
+  =========================== */
 @import "./variables.css";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  min-height: 100vh;
-  background-color: var(--color-bg);
-  color: var(--color-text);
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
 }
 
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+.container {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  max-width: 600px;
+  /* width: 100%; */
+}
+
+/* ===========================
+  3. Base Elements
+  =========================== */
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+code {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+/* ===========================
+  2. CSS Reset & Normalization
+  =========================== */
+
+input {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* ===========================
+  4. Accessibility
+  =========================== */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -24,12 +81,16 @@ body {
   border: 0;
 }
 
+/* ===========================
+  5. Layout: Header
+  =========================== */
 .header {
   position: relative;
   width: 100%;
   height: 200px;
   /* overflow: hidden; */
 }
+
 .header-bg {
   position: absolute;
   top: 0;
@@ -37,15 +98,151 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
-}
-.header h1 {
-  position: relative;
-  z-index: 2;
+  z-index: -1001;
 }
 
+.header h1 {
+  position: relative;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* ===========================
+  6. Layout: Main
+  =========================== */
+
+input {
+  width: 100%;
+  padding: 1rem;
+  background: var(--color-surface);
+  border-radius: 5px;
+  color: var(--color-text);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-indent: 0.5rem;
+  caret-color: var(--color-blue-500);
+}
+
+.todo-list {
+  list-style: none;
+  margin-top: 1rem;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todo-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.todo-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: var(--color-gray-600);
+}
+
+.todo-list-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--color-surface);
+  color: var(--color-gray-600);
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todo-list-footer button:hover {
+  color: var(--color-text);
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: var(--color-gray-600);
+  background: var(--color-surface);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filters button {
+  color: var(--color-gray-600);
+}
+
+.filters button:hover {
+  color: var(--color-text);
+}
+
+.filters button.active {
+  color: var(--color-blue-500);
+}
+/* ===========================
+  7. Components
+  =========================== */
+.dark-mode-toggle {
+  position: relative;
+  z-index: 10;
+}
+
+.circle-checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  margin-right: 0.25rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.circle-checkbox:hover {
+  border: 2px solid transparent;
+  background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    var(--color-check-bg) border-box;
+}
+
+.circle-checkbox.checked {
+  background: var(--color-check-bg);
+  border: none;
+}
+
+.circle-checkbox img {
+  width: 10px;
+  height: 10px;
+}
+
+/* ===========================
+  8. Responsive & Media Queries
+  =========================== */
 @media (min-width: var(--width-desktop)) {
-  .header {
-    background-image: url("/bg-desktop-dark.jpg");
+  .header-bg.dark {
+    content: url("/images/bg-desktop-dark.jpg");
+  }
+  .header-bg.light {
+    content: url("/images/bg-desktop-light.jpg");
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

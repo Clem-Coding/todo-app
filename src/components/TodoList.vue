@@ -1,14 +1,23 @@
 <template>
-  <ul>
+  <ul class="todo-list">
     <li v-for="todo in props.todos" :key="todo.id" :class="{ active: todo.completed }">
-      <input type="checkbox" :checked="todo.completed" @change="emitToggle(todo.id)" />
-      {{ todo.title }}
+      <div class="todo-left">
+        <button
+          class="circle-checkbox"
+          :class="{ checked: todo.completed }"
+          @click="emitToggle(todo.id)"
+          aria-label="Marquer comme complétée"
+        >
+          <img v-if="todo.completed" src="/images/icon-check.svg" alt="Complétée" />
+        </button>
+        <span class="todo-text" :class="{ completed: todo.completed }">{{ todo.title }}</span>
+      </div>
       <button @click="emitDelete(todo.id)">
         <img src="/images/icon-cross.svg" alt="Supprimer la tâche" />
       </button>
     </li>
   </ul>
-  <div>
+  <div class="todo-list-footer">
     <p>
       {{ props.itemsLeft !== 0 ? props.itemsLeft : "" }}
       {{
