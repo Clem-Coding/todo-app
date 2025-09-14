@@ -62,7 +62,7 @@ button {
 }
 
 /* ===========================
-  4. Accessibility
+  3. Accessibility
   =========================== */
 .sr-only {
   position: absolute;
@@ -77,7 +77,7 @@ button {
 }
 
 /* ===========================
-  5. Layout: Header
+  4. Layout: Header
   =========================== */
 .header {
   position: relative;
@@ -112,7 +112,7 @@ button {
 }
 
 /* ===========================
-  6. Layout: Main
+  5. Layout: Main
   =========================== */
 
 main.container {
@@ -149,6 +149,10 @@ input {
   background: var(--color-surface);
 }
 
+.todo-list li .delete-button {
+  margin-left: 1rem;
+}
+
 .todo-list li:last-child {
   border-bottom: none;
   border-radius: 0 0 5px 5px;
@@ -158,14 +162,16 @@ input {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  min-width: 0;
 }
 
-/*
- A voir plus tard
 .todo-text {
-  max-width: calc(100% - 40px);
+  flex: 1 1 0;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
-} */
+}
 
 .todo-text.completed {
   text-decoration: line-through;
@@ -210,8 +216,9 @@ input {
 .filters button.active {
   color: var(--color-blue-500);
 }
+
 /* ===========================
-  7. Components
+  6. Components
   =========================== */
 .dark-mode-toggle {
   position: relative;
@@ -246,7 +253,7 @@ input {
 }
 
 /* ===========================
-  8. Responsive & Media Queries
+  7. Responsive & Media Queries
   =========================== */
 @media (min-width: 1440px) {
   body {

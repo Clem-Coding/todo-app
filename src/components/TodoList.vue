@@ -8,12 +8,12 @@
           @click="emitToggle(todo.id)"
           aria-label="Marquer comme complétée"
         >
-          <img v-if="todo.completed" src="/images/icon-check.svg" alt="Complétée" />
+          <img v-if="todo.completed" src="/images/icon-check.svg" alt="Done" />
         </button>
         <span class="todo-text" :class="{ completed: todo.completed }">{{ todo.title }}</span>
       </div>
-      <button @click="emitDelete(todo.id)">
-        <img src="/images/icon-cross.svg" alt="Supprimer la tâche" />
+      <button @click="emitDelete(todo.id)" class="delete-button" aria-label="Delete todo">
+        <img src="/images/icon-cross.svg" alt="Delete todo" />
       </button>
     </li>
   </ul>
