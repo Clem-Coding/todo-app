@@ -23,35 +23,22 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-family);
+  font-size: var(--font-size-body-mobile);
 }
 
 .container {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 600px;
-  /* width: 100%; */
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-/* ===========================
-  3. Base Elements
-  =========================== */
 hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
-}
-
-code {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
 }
 
 /* ===========================
@@ -64,6 +51,14 @@ input {
   background: none;
   border: none;
   outline: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
 }
 
 /* ===========================
@@ -87,22 +82,23 @@ input {
 .header {
   position: relative;
   width: 100%;
-  height: 200px;
-  /* overflow: hidden; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 200px;
 }
 
-.header-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1001;
+.header.dark {
+  background-image: url("/images/bg-mobile-dark.jpg");
 }
-
+.header.light {
+  background-image: url("/images/bg-mobile-light.jpg");
+}
 .header h1 {
   position: relative;
+  letter-spacing: 0.1em;
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-bold);
 }
 
 .header-content {
@@ -112,11 +108,18 @@ input {
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
+  padding-top: calc(var(--header-height-mobile) / 4);
 }
 
 /* ===========================
   6. Layout: Main
   =========================== */
+
+main.container {
+  position: relative;
+  z-index: 2;
+  margin-top: calc(-1 * var(--header-height-mobile) / 2);
+}
 
 input {
   width: 100%;
@@ -134,7 +137,7 @@ input {
   margin-top: 1rem;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-height: calc(var(--header-height-mobile) - 90px);
 }
 
 .todo-list li {
@@ -146,11 +149,23 @@ input {
   background: var(--color-surface);
 }
 
+.todo-list li:last-child {
+  border-bottom: none;
+  border-radius: 0 0 5px 5px;
+}
+
 .todo-left {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
+
+/*
+ A voir plus tard
+.todo-text {
+  max-width: calc(100% - 40px);
+  text-overflow: ellipsis;
+} */
 
 .todo-text.completed {
   text-decoration: line-through;
@@ -164,7 +179,7 @@ input {
   padding: 1rem;
   background: var(--color-surface);
   color: var(--color-gray-600);
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -233,16 +248,36 @@ input {
 /* ===========================
   8. Responsive & Media Queries
   =========================== */
-@media (min-width: var(--width-desktop)) {
-  .header-bg.dark {
-    content: url("/images/bg-desktop-dark.jpg");
-  }
-  .header-bg.light {
-    content: url("/images/bg-desktop-light.jpg");
+@media (min-width: 1440px) {
+  body {
+    font-size: var(--font-size-body-desktop);
   }
 
   .container {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .header {
+    min-height: 500px;
+  }
+
+  .header-content {
+    padding-top: calc(var(--header-height-desktop) / 4);
+  }
+
+  .header.dark {
+    background-image: url("/images/bg-desktop-dark.jpg");
+  }
+  .header.light {
+    background-image: url("/images/bg-desktop-light.jpg");
+  }
+
+  main.container {
+    margin-top: calc(-1 * var(--header-height-desktop) / 2);
+  }
+
+  .todo-list {
+    min-height: calc(var(--header-height-desktop) - 90px);
   }
 }

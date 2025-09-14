@@ -1,11 +1,12 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit" class="todo-input-form">
     <label for="new-task-input" class="sr-only">Nouvelle tâche</label>
     <input
       id="new-task-input"
       type="text"
-      placeholder="Ajouter une nouvelle tâche"
+      placeholder="Create a new todo..."
       v-model="newTask"
+      class="todo-input"
     />
     <label for="submit" class="submit-label"></label>
   </form>

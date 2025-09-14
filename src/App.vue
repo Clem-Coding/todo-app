@@ -1,15 +1,8 @@
 <template>
-  <header class="header">
-    <div class="container">
-      <img
-        :class="['header-bg', isDarkMode ? 'dark' : 'light']"
-        :src="isDarkMode ? '/images/bg-mobile-dark.jpg' : '/images/bg-mobile-light.jpg'"
-        alt="Background"
-      />
-      <div class="header-content">
-        <h1>TODO</h1>
-        <DarkModeToggle :isDarkMode="isDarkMode" @toggle-dark-mode="toggleDarkMode" />
-      </div>
+  <header :class="['header', isDarkMode ? 'dark' : 'light']">
+    <div class="header-content container">
+      <h1>TODO</h1>
+      <DarkModeToggle :isDarkMode="isDarkMode" @toggle-dark-mode="toggleDarkMode" />
     </div>
   </header>
 
@@ -35,7 +28,7 @@ import OptionsPanel from "./components/OptionsPanel.vue";
 import DarkModeToggle from "./components/DarkModeToggle.vue";
 
 // Track dark mode state
-const isDarkMode = ref(false);
+const isDarkMode = ref(true);
 
 interface Todo {
   title: string;
