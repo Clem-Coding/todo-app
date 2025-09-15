@@ -6,16 +6,12 @@ const todos = [
   { id: 2, title: "Get tickets for DevFest Nantes", completed: true },
 ];
 
-const wrapper = mount(TodoList, {
-  props: { todos, itemsLeft: 1 },
-});
-
 import { describe, it, expect } from "vitest";
 
 describe("TodoList", () => {
   it("displays all tasks passed as props", () => {
     const wrapper = mount(TodoList, {
-      props: { todos, itemsLeft: 1 },
+      props: { todos, itemsLeft: 1, filter: "all" },
     });
     expect(wrapper.text()).toContain("Finish reading Clean Code by Robert C. Martin");
     expect(wrapper.text()).toContain("Get tickets for DevFest Nantes");

@@ -56,7 +56,7 @@ describe("Items left counter", () => {
 
     for (const c of cases) {
       const wrapper = mount(TodoList, {
-        props: { itemsLeft: c.itemsLeft, todos: [] },
+        props: { itemsLeft: c.itemsLeft, todos: [], filter: "all" },
       });
       expect(wrapper.text()).toContain(c.expected);
     }
