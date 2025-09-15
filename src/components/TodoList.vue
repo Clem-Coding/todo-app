@@ -1,6 +1,16 @@
 <template>
-  <ul class="todo-list">
-    <li v-for="todo in props.todos" :key="todo.id" :class="{ active: todo.completed }">
+  <ul class="todo-list" :class="{ 'no-bottom-radius': props.todos.length >= 3 }">
+    <li
+      v-for="(todo, i) in props.todos"
+      :key="todo.id"
+      :class="{
+        active: todo.completed,
+        'radius-bottom': props.todos.length <= 2 && i === props.todos.length - 1,
+        'border-bottom':
+          (props.todos.length === 2 && i === 0) ||
+          (props.todos.length >= 3 && i < props.todos.length - 1),
+      }"
+    >
       <div class="todo-left">
         <button
           class="circle-checkbox"
@@ -18,13 +28,19 @@
     </li>
   </ul>
   <div class="todo-list-footer">
-    <p class="left">
+    <p class="left" :class="{ 'no-top-radius': props.todos.length >= 3 }">
       {{ props.itemsLeft !== 0 ? props.itemsLeft : "" }}
       {{
         props.itemsLeft === 0 ? "No items left" : props.itemsLeft === 1 ? "item left" : "items left"
       }}
     </p>
-    <button @click="emitClearCompleted" class="clear">Clear Completed</button>
+    <button
+      @click="emitClearCompleted"
+      class="clear"
+      :class="{ 'no-top-radius': props.todos.length >= 3 }"
+    >
+      Clear Completed
+    </button>
     <OptionsPanel
       :filter="props.filter"
       @set-filter="(value) => emit('set-filter', value)"
