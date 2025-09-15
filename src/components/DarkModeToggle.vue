@@ -1,7 +1,7 @@
 <template>
   <button class="dark-mode-toggle" @click="emitToggleDarkMode">
     <img
-      :src="isDarkMode ? '/images/icon-sun.svg' : '/images/icon-moon.svg'"
+      :src="isDarkMode ? '/todo-app/images/icon-sun.svg' : '/todo-app/images/icon-moon.svg'"
       alt="Toggle Dark Mode"
     />
   </button>
@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from "vue";
 
-const props = defineProps<{ isDarkMode: boolean }>();
+const { isDarkMode } = defineProps<{ isDarkMode: boolean }>();
 const emit = defineEmits(["toggle-dark-mode"]);
 
 const emitToggleDarkMode = () => {
