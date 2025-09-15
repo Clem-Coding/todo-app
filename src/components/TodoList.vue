@@ -25,12 +25,16 @@
       }}
     </p>
     <button @click="emitClearCompleted" class="clear">Clear Completed</button>
-    <OptionsPanel :filter="filter" @set-filter="setFilter" class="options-panel" />
+    <OptionsPanel
+      :filter="props.filter"
+      @set-filter="(value) => emit('set-filter', value)"
+      class="options-panel"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits } from "vue";
 import OptionsPanel from "./OptionsPanel.vue";
 
 interface Todo {
@@ -42,12 +46,14 @@ interface Todo {
 const props = defineProps<{
   todos: Todo[];
   itemsLeft: number;
+  filter: string;
 }>();
 
 const emit = defineEmits<{
   (e: "toggle-completed", id: number): void;
   (e: "clear-completed"): void;
   (e: "delete-todo", id: number): void;
+  (e: "set-filter", value: string): void;
 }>();
 
 const emitToggle = (id: number) => {
@@ -60,10 +66,5 @@ const emitClearCompleted = () => {
 
 const emitDelete = (id: number) => {
   emit("delete-todo", id);
-};
-
-const filter = ref("all");
-const setFilter = (newFilter: string) => {
-  filter.value = newFilter;
 };
 </script>

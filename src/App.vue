@@ -11,8 +11,10 @@
     <TodoList
       :todos="filteredTodos"
       :items-left="itemsLeft"
+      :filter="filter"
       @toggle-completed="toggleCompleted"
       @clear-completed="removeCompletedTodos"
+      @set-filter="setFilter"
       @delete-todo="deleteTodo"
     />
     <!-- <OptionsPanel :filter="filter" @set-filter="setFilter" /> -->
@@ -24,10 +26,8 @@ import { ref } from "vue";
 import { computed } from "vue";
 import ToDoInput from "./components/ToDoInput.vue";
 import TodoList from "./components/TodoList.vue";
-// import OptionsPanel from "./components/OptionsPanel.vue";
 import DarkModeToggle from "./components/DarkModeToggle.vue";
 
-// Track dark mode state
 const isDarkMode = ref(true);
 
 interface Todo {
@@ -43,11 +43,6 @@ const addTodo = (title: string) => {
     title,
     completed: false,
   });
-};
-
-const filter = ref("all");
-const setFilter = (newFilter: string) => {
-  filter.value = newFilter;
 };
 
 const filteredTodos = computed(() => {
@@ -75,6 +70,11 @@ const itemsLeft = computed(() => {
   const notCompleted = todos.value.filter((todo) => !todo.completed);
   return notCompleted.length;
 });
+
+const filter = ref("all");
+const setFilter = (newFilter: string) => {
+  filter.value = newFilter;
+};
 
 const deleteTodo = (id: number) => {
   todos.value = todos.value.filter((todo) => todo.id !== id);
