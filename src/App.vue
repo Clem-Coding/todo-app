@@ -15,7 +15,7 @@
       @clear-completed="removeCompletedTodos"
       @delete-todo="deleteTodo"
     />
-    <OptionsPanel :filter="filter" @set-filter="setFilter" />
+    <!-- <OptionsPanel :filter="filter" @set-filter="setFilter" /> -->
   </main>
 </template>
 
@@ -24,7 +24,7 @@ import { ref } from "vue";
 import { computed } from "vue";
 import ToDoInput from "./components/ToDoInput.vue";
 import TodoList from "./components/TodoList.vue";
-import OptionsPanel from "./components/OptionsPanel.vue";
+// import OptionsPanel from "./components/OptionsPanel.vue";
 import DarkModeToggle from "./components/DarkModeToggle.vue";
 
 // Track dark mode state

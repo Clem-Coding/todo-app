@@ -18,18 +18,20 @@
     </li>
   </ul>
   <div class="todo-list-footer">
-    <p>
+    <p class="left">
       {{ props.itemsLeft !== 0 ? props.itemsLeft : "" }}
       {{
         props.itemsLeft === 0 ? "No items left" : props.itemsLeft === 1 ? "item left" : "items left"
       }}
     </p>
-    <button @click="emitClearCompleted">Clear Completed</button>
+    <button @click="emitClearCompleted" class="clear">Clear Completed</button>
+    <OptionsPanel :filter="filter" @set-filter="setFilter" class="options-panel" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
+import { ref, defineProps, defineEmits } from "vue";
+import OptionsPanel from "./OptionsPanel.vue";
 
 interface Todo {
   title: string;
@@ -58,5 +60,10 @@ const emitClearCompleted = () => {
 
 const emitDelete = (id: number) => {
   emit("delete-todo", id);
+};
+
+const filter = ref("all");
+const setFilter = (newFilter: string) => {
+  filter.value = newFilter;
 };
 </script>

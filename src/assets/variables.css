@@ -3,8 +3,9 @@
   --width-mobile: 375px;
   --width-desktop: 1440px;
 
-  --header-height-mobile: 200px;
-  --header-height-desktop: 500px;
+  /* A revoir */
+  --header-height-mobile: 250px;
+  --header-height-desktop: 250px;
 
   /* Colors (Dark Theme by default) */
   --color-bg: hsl(235, 21%, 11%);
@@ -17,8 +18,8 @@
   --color-check-bg: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
   /* Typography */
-  --font-size-body-desktop: 1.125rem; /* 18px / 16 = 1.125rem */
-  --font-size-body-mobile: 1rem; /* 16px / 16 = 1rem */
+  --font-size-18: 1.125rem; /* 18px / 16 = 1.125rem */
+  --font-size-16: 1rem; /* 16px / 16 = 1rem */
   --font-family: "Josefin Sans", sans-serif;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
