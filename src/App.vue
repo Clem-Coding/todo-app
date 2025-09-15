@@ -17,7 +17,6 @@
       @set-filter="setFilter"
       @delete-todo="deleteTodo"
     />
-    <!-- <OptionsPanel :filter="filter" @set-filter="setFilter" /> -->
   </main>
 </template>
 

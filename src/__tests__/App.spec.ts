@@ -3,8 +3,9 @@ import { describe, it, expect } from "vitest";
 import App from "../App.vue";
 import ToDoInput from "../components/ToDoInput.vue";
 import TodoList from "../components/TodoList.vue";
+import type { VueWrapper } from "@vue/test-utils";
 
-async function addTasksForTesting(wrapper: any, tasks: string[]) {
+async function addTasksForTesting(wrapper: VueWrapper<typeof App>, tasks: string[]) {
   const inputComponent = wrapper.findComponent(ToDoInput);
 
   tasks.forEach((title, index) => {

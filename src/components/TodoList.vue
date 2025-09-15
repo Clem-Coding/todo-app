@@ -1,52 +1,59 @@
 <template>
-  <ul class="todo-list" :class="{ 'no-bottom-radius': props.todos.length >= 3 }">
-    <li
-      v-for="(todo, i) in props.todos"
-      :key="todo.id"
-      :class="{
-        active: todo.completed,
-        'radius-bottom': props.todos.length <= 2 && i === props.todos.length - 1,
-        'border-bottom':
-          (props.todos.length === 2 && i === 0) ||
-          (props.todos.length >= 3 && i < props.todos.length - 1),
-      }"
-    >
-      <div class="todo-left">
-        <button
-          class="circle-checkbox"
-          :class="{ checked: todo.completed }"
-          @click="emitToggle(todo.id)"
-          aria-label="Marquer comme complétée"
-        >
-          <img v-if="todo.completed" src="/images/icon-check.svg" alt="Done" />
+  <section aria-labelledby="todo-list-title">
+    <h2 class="sr-only">Todo List</h2>
+    <ul class="todo-list" :class="{ 'no-bottom-radius': props.todos.length >= 3 }">
+      <li
+        v-for="(todo, i) in props.todos"
+        :key="todo.id"
+        :class="{
+          active: todo.completed,
+          'radius-bottom': props.todos.length <= 2 && i === props.todos.length - 1,
+          'border-bottom':
+            (props.todos.length === 2 && i === 0) ||
+            (props.todos.length >= 3 && i < props.todos.length - 1),
+        }"
+      >
+        <div class="todo-left">
+          <button
+            class="circle-checkbox"
+            :class="{ checked: todo.completed }"
+            @click="emitToggle(todo.id)"
+            aria-label="Marquer comme complétée"
+          >
+            <img v-if="todo.completed" src="/images/icon-check.svg" alt="Done" />
+          </button>
+          <span class="todo-text" :class="{ completed: todo.completed }">{{ todo.title }}</span>
+        </div>
+        <button @click="emitDelete(todo.id)" class="delete-button" aria-label="Delete todo">
+          <img src="/images/icon-cross.svg" alt="Delete todo" />
         </button>
-        <span class="todo-text" :class="{ completed: todo.completed }">{{ todo.title }}</span>
-      </div>
-      <button @click="emitDelete(todo.id)" class="delete-button" aria-label="Delete todo">
-        <img src="/images/icon-cross.svg" alt="Delete todo" />
+      </li>
+    </ul>
+    <div class="todo-list-footer">
+      <p class="left" :class="{ 'no-top-radius': props.todos.length >= 3 }">
+        {{ props.itemsLeft !== 0 ? props.itemsLeft : "" }}
+        {{
+          props.itemsLeft === 0
+            ? "No items left"
+            : props.itemsLeft === 1
+            ? "item left"
+            : "items left"
+        }}
+      </p>
+      <button
+        @click="emitClearCompleted"
+        class="clear"
+        :class="{ 'no-top-radius': props.todos.length >= 3 }"
+      >
+        Clear Completed
       </button>
-    </li>
-  </ul>
-  <div class="todo-list-footer">
-    <p class="left" :class="{ 'no-top-radius': props.todos.length >= 3 }">
-      {{ props.itemsLeft !== 0 ? props.itemsLeft : "" }}
-      {{
-        props.itemsLeft === 0 ? "No items left" : props.itemsLeft === 1 ? "item left" : "items left"
-      }}
-    </p>
-    <button
-      @click="emitClearCompleted"
-      class="clear"
-      :class="{ 'no-top-radius': props.todos.length >= 3 }"
-    >
-      Clear Completed
-    </button>
-    <OptionsPanel
-      :filter="props.filter"
-      @set-filter="(value) => emit('set-filter', value)"
-      class="options-panel"
-    />
-  </div>
+      <OptionsPanel
+        :filter="props.filter"
+        @set-filter="(value) => emit('set-filter', value)"
+        class="options-panel"
+      />
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">

@@ -1,20 +1,38 @@
-# todo-app
+# Frontend Mentor - Todo App solution
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a solution to the [Todo App challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Recommended IDE Setup
+## Overview
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+### The challenge
 
-## Type Support for `.vue` Imports in TS
+Users should be able to:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Add new todos to the list
+- Mark todos as complete
+- Delete todos from the list
+- Filter by all/active/complete todos
+- Clear all completed todos
+- Toggle light and dark mode
 
-## Customize configuration
+## Links
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- Live Site URL: [https://clem-coding.github.io/todo-app/](https://clem-coding.github.io/todo-app/)
 
-## Project Setup
+## Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox & CSS Grid
+- Mobile-first workflow
+- [Vue.js](https://vuejs.org/) – JavaScript framework
+- [TypeScript](https://www.typescriptlang.org/) – Type-safe JavaScript
+
+## Getting Started
+
+### Project Setup
 
 ```sh
 npm install
