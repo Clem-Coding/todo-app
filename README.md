@@ -17,6 +17,10 @@ Users should be able to:
 - Clear all completed todos
 - Toggle light and dark mode
 
+## Screenshot
+
+![Todo App Screenshot](doc/todolist_screenshot.jpg)
+
 ## Links
 
 - Live Site URL: [https://clem-coding.github.io/todo-app/](https://clem-coding.github.io/todo-app/)
